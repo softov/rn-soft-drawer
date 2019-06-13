@@ -19,6 +19,7 @@
     "expo-image-picker": "^5.0.2",
     "expo-intent-launcher": "^5.0.1",
     "expo-permissions": "^5.0.1",
+    "expo-sharing": "^5.0.1",
     "humps": "^2.0.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",

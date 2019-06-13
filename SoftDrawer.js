@@ -11,7 +11,6 @@ import {
   View,
   TouchableOpacity,
   Slider,
-  Share,
 } from 'react-native';
 
 /* Expo deps, since many export {*} from 'expo'; is deprecated */
@@ -19,6 +18,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as Sharing from 'expo-sharing';
 
 import { ColorPicker, fromHsv } from 'react-native-color-picker';
 import { DrawPad } from './rn-draw';
@@ -127,32 +127,31 @@ export default class SoftDrawer extends React.Component {
       return;
     }
 
+    let uriShare = (Platform.OS === 'ios') ? ('file://' + uriSnap) : uriSnap;
+
     try {
-      const shareResult = await Share.share({
-        title: 'Picture Test',
-        url: uriSnap,
+      const shareResult = await Sharing.shareAsync(uriShare, {
+        mimeType: 'image/png'
       });
 
       console.log('Share result: ');
       console.log(shareResult);
 
-      if (shareResult.action === Share.sharedAction) {
-        if (shareResult.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (shareResult.action === Share.dismissedAction) {
-        // dismissed
-      }
+      // if (shareResult.action === Share.sharedAction) {
+      //   if (shareResult.activityType) {
+      //     // shared with activity type of result.activityType
+      //   } else {
+      //     // shared
+      //   }
+      // } else if (shareResult.action === Share.dismissedAction) {
+      //   // dismissed
+      // }
 
     } catch (error) {
       alert('Can\'t share file', error.message);
       console.log('Can\'t share file');
       console.log(error);
     }
-
-    // let uri = (Platform.OS === 'ios') ? ('file://' + result) : result;
     // this.props.onFinish({
     //   uri: uri,
     //   name: (result).split('/').pop(),
