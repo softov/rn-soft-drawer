@@ -26,7 +26,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-color-picker": "^0.4.1",
     "react-native-svg": "^9.5.1",
-    "react-native-view-shot": "^2.6.0"
+    "react-native-view-shot": "^2.6.0",
+    "rn-draw": "git://github.com/softov/rn-draw.git#d3-curves"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.0",

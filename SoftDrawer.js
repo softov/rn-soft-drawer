@@ -21,7 +21,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import * as Sharing from 'expo-sharing';
 
 import { ColorPicker, fromHsv } from 'react-native-color-picker';
-import { DrawPad } from './rn-draw';
+// from locally folder
+// import { DrawPad } from './rn-draw';
+
+// from component inside, there are more to come
+import { DrawPad } from 'rn-draw';
+
+// from default, do not break older versions
+import RNDraw from 'rn-draw';
 
 export default class SoftDrawer extends React.Component {
 
